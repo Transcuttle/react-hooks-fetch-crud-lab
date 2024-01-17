@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import QuestionItem from "./QuestionItem";
+import { QuestionContext } from "./QuestionContext";
 
 function QuestionList() {
+  const {questions} = useContext(QuestionContext)
+
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{/* display QuestionItem components here after fetching */}</ul>
+      <ul>
+        {questions.map((question) => (
+          <QuestionItem question={question} />
+        ))}
+      </ul>
     </section>
   );
 }
